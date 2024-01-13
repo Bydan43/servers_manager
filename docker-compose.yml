@@ -1,0 +1,51 @@
+version: '3.9'
+
+services:
+  sm-web:
+    image: server_manager
+    build:
+      dockerfile: Dockerfile
+    container_name: sm-web
+    volumes:
+      - "manager-app:/app"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@sm-db:5432/server_list
+      - BASE_URL=/servers_manager   # url path prefix
+      - MIGRATE=true
+    ports:
+      - "5000:5000"
+    depends_on:
+      sm-db:
+        condition: service_started
+  
+  sm-db:
+    image: postgres:15.3-alpine3.18
+    container_name: sm-db
+    restart: always
+    volumes:
+      - "manager-db:/var/lib/postgresql/data"
+      - "./init.sql:/docker-entrypoint-initdb.d/init.sql"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+
+  sm-nginx:
+    image: nginx:1.25.3
+    container_name: sm-nginx
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - "./nginx/conf.d:/etc/nginx/conf.d"
+      - "manager-app:/app:ro"
+    depends_on:
+      - sm-web
+        
+    
+
+volumes:
+  manager-db:
+  manager-app:

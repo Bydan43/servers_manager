@@ -1,0 +1,19 @@
+<!-- Operating System Addition Form -->
+<div class="collapse" id="addOs">
+    <div class="shadow p-3 mb-5 bg-body rounded" style="width: 900px;">
+        <form method="POST" action="{{ url_for('add_operating_system') }}">
+            <div class="input-group mb-3">
+                <span class="input-group-text">Operating System:</span>
+                <input class="form-control" type="text" name="operating_system_name" required>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+                <button class="btn btn-outline-primary" type="submit">Add</button>
+                <!-- Close form button -->
+                <button
+                        type="button" class="btn-close" data-bs-toggle="collapse" data-bs-target="#addOs"
+                        aria-expanded="false" aria-controls="addOs">
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

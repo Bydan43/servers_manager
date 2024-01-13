@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}404 Error Page{% endblock %}
+
+
+{% block content %}
+
+    <section class="error-404-section section-padding">
+        <div class="error">
+            <img src="{{ url_for('static', filename='img/error404.png') }}">
+        </div>
+        <div class="error-message">
+            <h3>Ooops! Page not found!</h3>
+            <p>Unfortunately, we cannot find the page you requested. You may have entered the address incorrectly.</p>
+            <a href="javascript:history.go(-1)" class="theme-btn">Come back</a>
+        </div>
+    </section>
+
+{% endblock %}
+
+
+
+</html>

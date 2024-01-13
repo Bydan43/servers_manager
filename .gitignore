@@ -1,0 +1,15 @@
+__pycache__/
+.devcontainer/
+.idea/
+.venv/
+test.py
+.env
+.env.dev
+.env.prod
+.zip
+.req
+.key
+req.conf
+req.conf.template
+migrations/
+

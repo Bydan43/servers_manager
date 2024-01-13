@@ -1,0 +1,27 @@
+<div class="col-md-9 col-lg-6">
+    <p class="d-inline-flex gap-2">
+
+        <button class="btn btn-primary btn3d" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+                aria-expanded="false" aria-controls="collapseExample">
+            Add a new server
+        </button>
+        <button class="btn btn-primary btn3d" type="button" data-bs-toggle="collapse" data-bs-target="#addProjects"
+                aria-expanded="false" aria-controls="addProjects">
+            Add a new project
+        </button>
+        <button class="btn btn-primary btn3d" type="button" data-bs-toggle="collapse" data-bs-target="#addOs"
+                aria-expanded="false" aria-controls="addOs">
+            Add new OS
+        </button>
+        <button class="btn btn-primary btn3d" type="button" data-bs-toggle="collapse" data-bs-target="#addServerPurpose"
+                aria-expanded="false" aria-controls="addServerPurpose">
+            Add a new server destination
+        </button>
+    </p>
+
+
+    {% include 'inc/add_servers.html' %}
+    {% include 'inc/add_projects.html' %}
+    {% include 'inc/add_os.html' %}
+    {% include 'inc/add_server_purpose.html' %}
+</div>

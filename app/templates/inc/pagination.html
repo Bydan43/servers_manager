@@ -1,0 +1,20 @@
+<!-- Пагинация -->
+<div class="pagination">
+    <span class="page-item {% if servers.prev_num is none %}disabled{% endif %}">
+        <a class="page-link" href="{{ url_for('index', page=servers.prev_num, search=search_query, per_page=per_page) }}">&laquo;</a>
+    </span>
+    {% for num in servers.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+        {% if num %}
+            {% if num != servers.page %}
+                <span class="page-item"><a class="page-link" href="{{ url_for('index', page=num, search=search_query, per_page=per_page) }}">{{ num }}</a></span>
+            {% else %}
+                <span class="page-item active"><span class="page-link">{{ num }}</span></span>
+            {% endif %}
+        {% else %}
+            <span class="page-item disabled"><span class="page-link">...</span></span>
+        {% endif %}
+    {% endfor %}
+    <span class="page-item {% if not servers.has_next %}disabled{% endif %}">
+        <a class="page-link" href="{{ url_for('index', page=servers.next_num, search=search_query, per_page=per_page) }}">&raquo;</a>
+    </span>
+</div>

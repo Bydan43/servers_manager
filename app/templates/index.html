@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Server List{% endblock %}
+
+{% block content %}
+
+    {% include 'navbar.html' %}
+
+<div style="margin-left: 20px;">
+    <!-- Add Server Form -->
+    {% include 'add_form.html' %}
+    <!-- Server List Table -->
+    {% include 'server_list_table.html' %}
+</div>
+
+{% endblock %}

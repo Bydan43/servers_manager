@@ -1,0 +1,82 @@
+<!-- Server Addition Form -->
+<div class="collapse" id="collapseExample">
+    <div class="shadow p-3 mb-5 bg-body rounded" style="width: 900px;">
+
+        <form id="addServerForm" action="{{ url_for('index') }}" method="post">
+            <div class="input-group mb-3">
+                <span class="input-group-text">Server Name:</span>
+                <input class="form-control" placeholder="Enter server name" type="text"
+                       id="serverName"
+                       name="server_name" required>
+                <span class="input-group-text">IP:</span>
+                <input class="form-control" placeholder="Enter server IP address" type="text"
+                       id="ipAddress"
+                       name="ip_address" required>
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">OS</span>
+                <select class="form-select" id="os" name="os_id" required>
+                    {% for os in operating_systems %}
+                    <option value="{{ os.id }}">{{ os.name }}</option>
+                    {% endfor %}
+                </select>
+                <span class="input-group-text">Server Purpose:</span>
+                <select class="form-select" id="purpose" name="server_purpose_id" required>
+                    {% for purpose in server_purposes %}
+                    <option value="{{ purpose.id }}">{{ purpose.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">Environment:</span>
+                <select class="form-select" id="devEnv" name="dev_environment_id" required>
+                    {% for dev_env in dev_environments %}
+                    <option value="{{ dev_env.id }}">{{ dev_env.name }}</option>
+                    {% endfor %}
+                </select>
+                <span class="input-group-text">Project:</span>
+                <select class="form-select" id="project" name="project_id" required>
+                    {% for proj in projects %}
+                    <option value="{{ proj.id }}">{{ proj.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">Applications:</span>
+                <input class="form-control"
+                       placeholder="Enter installed applications and services on the server"
+                       type="text" id="apps" name="apps">
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">Ports:</span>
+                <input class="form-control" placeholder="Enter available ports" type="text" id="ports"
+                       name="ports">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="note">Description:</label>
+                <textarea class="form-control"
+                          type="text"
+                          id="note" name="note">
+                                </textarea>
+            </div>
+
+            <div class="mb-2">
+                <div class="d-flex justify-content-between align-items-center">
+                    <button class="btn btn-outline-primary" type="submit">Add</button>
+                    <!-- Close form button -->
+                    <button
+                            type="button" class="btn-close" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+                            aria-expanded="false" aria-controls="collapseExample">
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+</div>

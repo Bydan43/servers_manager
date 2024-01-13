@@ -1,0 +1,12 @@
+@import url(404.css);
+@import url(buttons.css);
+
+/* Фон */
+body {
+    background: #74ebd5;
+    background: -webkit-linear-gradient(to right, #74ebd5, #ACB6E5);
+    background: linear-gradient(to right, #74ebd5, #ACB6E5);
+    min-height: 100vh;
+    margin: 0px;
+    font-family: 'Arial', sans-serif;
+}
