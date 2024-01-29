@@ -13,7 +13,6 @@ class BaseConfig(object):
     DEBUG = os.environ.get('DEBUG', 'True')
     SECRET_KEY = 'wer234r6amsfdyustyi65e9eiwhy794ol421tgs00768ny576w4q'
     CSRF_ENABLED = True
-    base_url = os.environ.get('BASE_URL', '')
 
 
 class ProductionConfig(BaseConfig):

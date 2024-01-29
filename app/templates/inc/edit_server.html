@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}Create certs{% endblock %}
+
+{% block content %}
+
+{% include 'navbar.html' %}
+<div style="margin-left: 20px;">
+    <div class="shadow p-3 mb-5 bg-body rounded" style="width: 900px;">
+
+        <div class="container">
+            <h2>Editing server information</h2>
+            <form method="POST" action="{{ url_for('edit_server', server_id=server.id) }}">
+
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Server Name:</span>
+                    <input type="text" class="form-control" id="server_name" name="server_name"
+                           value="{{ server.server_name }}" required>
+                    <span class="input-group-text">IP:</span>
+                    <input type="text" class="form-control" id="ip_address" name="ip_address"
+                           value="{{ server.ip_address }}" required>
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text">OS:</span>
+                    <select class="form-select" id="os_id" name="os_id" required>
+                        {% for os in operating_systems %}
+                        <option value="{{ os.id }}" {% if os.id== server.os_id %}selected{% endif %}>{{ os.name }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                    <span class="input-group-text">Server Purpose:</span>
+                    <select class="form-select" id="server_purpose_id" name="server_purpose_id" required>
+                        {% for purpose in server_purposes %}
+                        <option value="{{ purpose.id }}" {% if purpose.id== server.server_purpose_id %}selected{% endif
+                                %}>{{ purpose.name }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Environment:</span>
+                    <select class="form-select" id="dev_environment_id" name="dev_environment_id" required>
+                        {% for environment in dev_environments %}
+                        <option value="{{ environment.id }}" {% if environment.id== server.dev_environment_id
+                                %}selected{% endif %}>{{ environment.name }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                    <span class="input-group-text">Project:</span>
+                    <select class="form-select" id="project_id" name="project_id" required>
+                        {% for project in projects %}
+                        <option value="{{ project.id }}" {% if project.id== server.project_id %}selected{% endif %}>{{
+                            project.number }} {{ project.name }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Applications:</span>
+                    <input type="text" class="form-control" id="apps" name="apps" value="{{ server.apps }}">
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Ports:</span>
+                    <input type="text" class="form-control" id="ports" name="ports" value="{{ server.ports }}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="note">Description:</label>
+                    <textarea class="form-control" id="note" name="note">{{ server.note }}</textarea>
+                </div>
+
+                <button class="btn btn-outline-primary" type="submit">Save changes</button>
+                <a href="{{ url_for('index') }}" class="btn btn-outline-primary">Back</a>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
