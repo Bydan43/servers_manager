@@ -19,3 +19,14 @@ This project can be run in Docker. For this purpose, the project has a docker-co
 ```bash
 docker-compose up -d --build
 ```
+
+## License
+
+All code in this repository is licensed under the terms of the `MIT License`. For further information please refer to the `LICENSE` file.
+
+
+## Author
+
+Bydanov Ilya
+Email: bydanav@gmail.com
+
